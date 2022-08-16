@@ -1,38 +1,27 @@
-import * as React from "react"
 import {
-  ChakraProvider,
   Box,
-  Text,
-  Link,
-  VStack,
-  Code,
+  ChakraProvider,
+  Container,
   Grid,
+  GridItem,
   theme,
-} from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
+} from "@chakra-ui/react";
+import { CreateUsersForm } from "./components/Forms/CreateUsersForm";
+import { UsersDisplayTable } from "./components/Tables/UsersDisplayTable";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
+    <Box fontSize="xl">
+      <Container>
+        <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+          <GridItem w="100%" boxShadow="xl" p="6" rounded="md" bg="white">
+            <CreateUsersForm />
+          </GridItem>
+          <GridItem w="100%" boxShadow="xl" p="6" rounded="md" bg="white">
+            <UsersDisplayTable />
+          </GridItem>
+        </Grid>
+      </Container>
     </Box>
   </ChakraProvider>
-)
+);
